@@ -1,0 +1,16 @@
+{
+  "name": "Sign Lens",
+  "short_name": "SLens",
+  "start_url": "index.html",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "./img/1-min.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    }
+  ],
+  "theme_color": "#ffd31d",
+  "background_color": "#333",
+  "display": "standalone"
+}

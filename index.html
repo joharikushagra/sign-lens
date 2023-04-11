@@ -1,98 +1,142 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <link rel="shortcut icon" href="favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="demo.css" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection@0.0/face_detection.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="manifest" href="./manifest.json">
+
+
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script> -->
+  <script src="./js/camera.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.1/hands.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-  
-  <!-- BULMA NAVBAR -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="index.html">
-        <img src="https://camo.githubusercontent.com/82f2bfa2005e2755362d419da02d788b366506b0d55212c160abd5100f3a8822/68747470733a2f2f312e62702e626c6f6773706f742e636f6d2f2d7753746b30565a44664d6b2f59434330474952507244492f41414141414141414147632f31796a37494f556564766f654f3143754378713745544c57304671586e69366d77434c63424741735948512f733332302f6c6f676f746578742e706e67" >
-      </a>
-  
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-  
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="face.html">
-          Face
-        </a>
-  
-        <a class="navbar-item" href="faceMesh.html">
-          Face Mesh
-        </a>
-
-        <a class="navbar-item" href="hands.html">
-          Hands
-        </a>
-
-        <a class="navbar-item" href="pose.html">
-          Pose
-        </a>
-        
-        <a class="navbar-item" href="holistic.html">
-          Holistic
-        </a>
-        </div>
-      </div>
-  
-    </div>
-  </nav>
 
   <!-- CONTENTS -->
-  <div class="container" style="margin-top: 20px;">
+  <div class="container" style="margin-top: 20px;padding: 20px;">
+    <h1 class="title" style="text-align: center;letter-spacing: 1.5rem;">Sign Lens <i class="fa fa-camera"
+        aria-hidden="true"></i>
+      <hr>
+    </h1>
+    <div class="columns is-mobile">
+      <div class=" column about_container">
+        <h1 class="subtitle " style="margin-bottom: 4px;">About Sign Lens <i class="fa fa-camera"
+            aria-hidden="true"></i></h1>
+        Sign Lens is a tool which is based on a computer vision system that can recognize and detect alphanumeric
+        characters in real-time. The system is designed to detect and recognize characters from persons gestures in
+        various lighting conditions and environments
+      </div>
+      <!-- <img src="./img/1-min.jpg" alt="">       -->
+
+    </div>
 
     <div class="columns">
-      
+      <!-- <img src="./img/2-min.jpg" alt=""> -->
+      <div class=" column about_container">
+        <h1 class="subtitle " style="margin-bottom: 4px;">How It works <i class="fa fa-solid fa-question"
+            aria-hidden="true"></i></h1>
+        The system is designed to take input from a camera and process the video stream in real-time. The output of the
+        system will be the recognized alphanumeric characters
+      </div>
+    </div>
+    <div class="columns">
+      <div class=" column about_container">
+        <h1 class="subtitle " style="margin-bottom: 4px;">Goal <i class="fa fa-crosshairs" aria-hidden="true"></i></h1>
+        The goal is to become a robust and reliable system for Indian sign detection that can be deployed in a variety
+        of applications. The system's output will be used to provide valuable insights.
+      </div>
+      <!-- <img src="./img/3-min.jpg" alt=""> -->
+    </div>
+
+
+
+    <div class="mob-view">
+
+
       <!-- WEBCAM INPUT -->
-      <div class="column">
+      <div class="column" style="display: none;">
         <article class="panel is-info">
           <p class="panel-heading">
             Webcam Input
           </p>
           <div class="panel-block">
-            <video class="input_video1"></video>
+            <video id="vIn" class="input_video3"></video>
           </div>
         </article>
       </div>
 
       <!-- MEDIAPIPE OUTPUT -->
-      <div class="column">
+      <div class="column" style="display: flex;justify-content: center;">
         <article class="panel is-info">
-          <p class="panel-heading">
-            Mediapipe Face Detection
-          </p>
           <div class="panel-block">
-            <canvas class="output1" width="480px" height="480px"></canvas>
-          </div>
+            <canvas class="output3" width="480px" height="480px"></canvas>
+            <div id="result"> </div>
+
         </article>
+
       </div>
-    </div>
-    
-    <div class="loading">
-      <div class="spinner"></div>
+
+
+      <div class="column" style="display: flex;justify-content: center;align-items: center;">
+
+        <div class="has-background-white-bis column result_container">
+          <h1 class="subtitle has-text-grey-darker" style="text-align: center;">
+            Text Conversion Result: <i class="fa fa-sharp fa-solid fa-arrow-down"></i>
+          </h1>
+          <h1 id="result_char" class="title" style="text-align: center;margin: 24px 0;font-size: 4rem;">L</h1>
+        </div>
+
+
+      </div>
+
     </div>
   </div>
+  <!-- </div> -->
 
-  <div style="visibility: hidden;" class="control1">
+  <div class="loading">
+    <div class="spinner"></div>
+  </div>
+  <div style="visibility: hidden;" class="control3">
   </div>
 
-  <script type="text/javascript" src="./js/face.js"></script>
+  <footer class="footer" style="width:100%">
+    <div class="title has-text-centered">
+      Made With &#9829;
+    </div>
+  </footer>
+
+  <script>
+    //Selector for your <video> element
+//       const video = document.querySelector('#vIn');
+
+// //Core
+// window.navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+//     .then(stream => {
+//         video.srcObject = stream;
+//         video.onloadedmetadata = (e) => {
+//             video.play();
+//         };
+//     })
+//     .catch( () => {
+//         alert('You have give browser the permission to run Webcam and mic ;( ');
+//     });
+
+  </script>
+  <script type="text/javascript" src="./js/hands.js"></script>
 </body>
+
 </html>
