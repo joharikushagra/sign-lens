@@ -97,6 +97,7 @@ const camera = new Camera(video3, {
   onFrame: async () => {
     await hands.send({ image: video3 });
   },
+  facingMode: "environment",
   width: 480,
   height: 480,
 });
@@ -205,7 +206,7 @@ function showCanvasAsImage(canvas, boundingBox) {
   // Add the image to the document body
   const ele = document.getElementById("result");
   ele.innerHTML = "";
-  ele.appendChild(image);
+  // ele.appendChild(image);
 
   return croppedCanvas.toDataURL("image/png", 1);
 }
@@ -215,9 +216,12 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 }
 
+window.customURL = "https://a4f3-220-158-168-162.ngrok-free.app/predict";
+
 function recognize(data) {
   console.log("fds");
-  fetch("http://10.12.1.245:8000/predict", {
+  fetch(window.customURL, {
+    // fetch("http://10.12.1.245:8000/predict", {
     method: "POST",
     body: data,
     "Content-Type": "multipart/form-data",
