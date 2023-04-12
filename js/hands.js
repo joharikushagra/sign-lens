@@ -97,7 +97,8 @@ const camera = new Camera(video3, {
   onFrame: async () => {
     await hands.send({ image: video3 });
   },
-  facingMode: "environment",
+  facingMode: "user",
+  // facingMode: "environment",
   width: 480,
   height: 480,
 });
@@ -245,7 +246,7 @@ function mirrorImage(
 function recognize(data) {
   console.log("fds");
   fetch(window.customURL, {
-  // fetch("http://10.12.1.245:8000/predict", {
+    // fetch("http://10.12.1.245:8000/predict", {
     method: "POST",
     body: data,
     "Content-Type": "multipart/form-data",
