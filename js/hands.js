@@ -194,6 +194,7 @@ function showCanvasAsImage(canvas, boundingBox) {
     boundingBox.height
   );
 
+  mirrorImage(context, croppedCanvas);
   // convert binary
 
   // Set the image source to the cropped canvas data URL
@@ -204,9 +205,11 @@ function showCanvasAsImage(canvas, boundingBox) {
   // createImageBitmap(croppedCanvas.toBlob())
 
   // Add the image to the document body
-  const ele = document.getElementById("result");
-  ele.innerHTML = "";
+  // const ele = document.getElementById("result");
+  // ele.innerHTML = "";
   // ele.appendChild(image);
+
+  // console.log(ele);
 
   return croppedCanvas.toDataURL("image/png", 1);
 }
@@ -216,12 +219,33 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("../service-worker.js");
 }
 
-window.customURL = "https://a4f3-220-158-168-162.ngrok-free.app/predict";
+window.customURL = "https://1ca0-220-158-168-162.ngrok-free.app/predict";
+
+function mirrorImage(
+  ctx,
+  image,
+  x = 0,
+  y = 0,
+  horizontal = true,
+  vertical = false
+) {
+  ctx.save(); // save the current canvas state
+  ctx.setTransform(
+    horizontal ? -1 : 1,
+    0, // set the direction of x axis
+    0,
+    vertical ? -1 : 1, // set the direction of y axis
+    x + (horizontal ? image.width : 0), // set the x origin
+    y + (vertical ? image.height : 0) // set the y origin
+  );
+  ctx.drawImage(image, 0, 0);
+  ctx.restore(); // restore the state as it was when this function was called
+}
 
 function recognize(data) {
   console.log("fds");
-  fetch(window.customURL, {
-    // fetch("http://10.12.1.245:8000/predict", {
+  // fetch(window.customURL, {
+  fetch("http://10.12.1.245:8000/predict", {
     method: "POST",
     body: data,
     "Content-Type": "multipart/form-data",
