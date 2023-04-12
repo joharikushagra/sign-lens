@@ -97,9 +97,7 @@ const camera = new Camera(video3, {
   onFrame: async () => {
     await hands.send({ image: video3 });
   },
-  facingMode: {
-    exact: "environment",
-  },
+  facingMode: "environment",
   width: 480,
   height: 480,
 });
