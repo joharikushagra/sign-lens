@@ -244,8 +244,8 @@ function mirrorImage(
 
 function recognize(data) {
   console.log("fds");
-  // fetch(window.customURL, {
-  fetch("http://10.12.1.245:8000/predict", {
+  fetch(window.customURL, {
+  // fetch("http://10.12.1.245:8000/predict", {
     method: "POST",
     body: data,
     "Content-Type": "multipart/form-data",
