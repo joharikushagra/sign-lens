@@ -214,10 +214,10 @@ function showCanvasAsImage(canvas, boundingBox) {
   return croppedCanvas.toDataURL("image/png", 1);
 }
 
-if ("serviceWorker" in navigator) {
-  // register service worker
-  navigator.serviceWorker.register("../service-worker.js");
-}
+// if ("serviceWorker" in navigator) {
+//   // register service worker
+//   navigator.serviceWorker.register("../service-worker.js");
+// }
 
 window.customURL = "https://1ca0-220-158-168-162.ngrok-free.app/predict";
 
