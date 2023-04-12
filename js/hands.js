@@ -213,7 +213,7 @@ function showCanvasAsImage(canvas, boundingBox) {
 
 if ("serviceWorker" in navigator) {
   // register service worker
-  navigator.serviceWorker.register("service-worker.js");
+  navigator.serviceWorker.register("../service-worker.js");
 }
 
 window.customURL = "https://a4f3-220-158-168-162.ngrok-free.app/predict";
