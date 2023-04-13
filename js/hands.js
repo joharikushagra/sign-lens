@@ -206,9 +206,9 @@ function showCanvasAsImage(canvas, boundingBox) {
   // createImageBitmap(croppedCanvas.toBlob())
 
   // Add the image to the document body
-  // const ele = document.getElementById("result");
-  // ele.innerHTML = "";
-  // ele.appendChild(image);
+  const ele = document.getElementById("result");
+  ele.innerHTML = "";
+  ele.appendChild(image);
 
   // console.log(ele);
 
@@ -220,7 +220,7 @@ function showCanvasAsImage(canvas, boundingBox) {
 //   navigator.serviceWorker.register("../service-worker.js");
 // }
 
-window.customURL = "https://2ff9-220-158-168-162.ngrok-free.app/predict";
+window.customURL = "https://b578-2409-40d7-1-8a8b-29f5-a02c-8421-136b.ngrok-free.app/predict";
 
 function mirrorImage(
   ctx,
