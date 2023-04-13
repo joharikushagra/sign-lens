@@ -220,7 +220,7 @@ function showCanvasAsImage(canvas, boundingBox) {
 //   navigator.serviceWorker.register("../service-worker.js");
 // }
 
-window.customURL = "https://1ca0-220-158-168-162.ngrok-free.app/predict";
+window.customURL = "https://2ff9-220-158-168-162.ngrok-free.app/predict";
 
 function mirrorImage(
   ctx,
